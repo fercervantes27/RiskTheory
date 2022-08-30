@@ -4,7 +4,7 @@
 # from the file LIFEinsurance.csv that specifies age and insured amount for
 # each policy, with the additional benefit of twice the insured amount in case
 # of accidental death, assuming that 1 out of 10 deaths is accidental
-# (regardless of the age). Use the mortality table in the file mortality.csv}
+# (regardless of the age). Use the mortality table in the file mortality.csv
 # and do the following:
 
 ## a) Make use of the Julia packages CSV.jl and DataFrames.jl to read the data,
@@ -27,8 +27,8 @@ end
 begin
     ES = 0.0
     VS = 0.0
-    n = length(policy.AGE)
-    for j ∈ 1:n
+    n = nrow(policy) # or: length(policy.AGE)
+    for j ∈ 1:n # or: for j in 1:n 
         qj = q[policy.AGE[j]]
         cj = policy.INSAMOUNT[j]
         ES += (1 + k)*cj*qj # Same as ES = ES + (1 + k)*cj*qj
@@ -43,13 +43,13 @@ end
 ##    and variance of total claims, and compare to the theoretical values
 ##    obtained in the previous item.
 
-# First we check time with less simulation: m = 10,000
+# First we check time with less simulations: m = 10,000
 
 @time begin # The macro @time measures time execution (may change each time is called)
     m = 10_000
     S = zeros(m) 
     for j ∈ 1:n
-        Accident = rand(Bernoulli(k), m) # vector of size m
+        Accident = rand(Bernoulli(k), m) # vector of size m        
         Death = rand(Bernoulli(q[policy.AGE[j]]), m) # vector of size m
         S = S .+ (policy.INSAMOUNT[j] .* Death .* (1 .+ Accident))
     end
@@ -62,7 +62,7 @@ end
 
 @time begin
     m = 1_000_000
-    S = zeros(m) 
+    S = zeros(m)
     for j ∈ 1:n
         Accident = rand(Bernoulli(k), m) # vector of size m
         Death = rand(Bernoulli(q[policy.AGE[j]]), m) # vector of size m
@@ -104,7 +104,7 @@ begin
 end
 
 
-## e) Graph a histogram of the simulations of total claims from item c) and
+## f) Graph a histogram of the simulations of total claims from item c) and
 ##    add to the same graph the approximated normal density.
 
 begin
