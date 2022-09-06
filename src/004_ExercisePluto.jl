@@ -213,9 +213,9 @@ md"And finally, the collective risk model simulation:"
 
 # ╔═╡ b38c7204-6273-499c-b335-6d260f5e26dc
 begin
-	B = Binomial(r, qN)
+	B = Binomial(r, qN) # P = Poisson(EN) would also work in this case since E(N) ≈ V(N)
 	mm = 100_000
-	nn = rand(B, mm) # simulating frequency N
+	nn = rand(B, mm) # simulating frequency N, or: n = rand(P, m) using Poisson
 	Sc = zeros(mm) 
 	@time for i ∈ 1:mm
         Sc[i] += sum(simSeverity(nn[i]))

@@ -49,6 +49,13 @@ begin
 	println("range = [ ", minimum(sim[1]), " , ", maximum(sim[1]), " ]")
 end
 
+# ╔═╡ a31d6113-2943-4ba7-89d7-29bebf31a970
+begin
+	histogram(sim[1], label = "total claims", bins = 50)
+	xaxis!("claims")
+	yaxis!("frequency")
+end
+
 # ╔═╡ f8079b3d-58c1-43cf-9921-2bb6370528ab
 md"### Calculations about $S\,|\,S>0$"
 
@@ -58,13 +65,6 @@ begin
 	println("E(S | S > 0) = ", mean(claims), "   V(S | S > 0) = ", var(claims))
 	println("M(S | S > 0) = ", median(claims), "   VaR(S | S > 0) = ", quantile(claims, 0.995))
 	println("range = [ ", minimum(claims), " , ", maximum(claims), " ]")
-end
-
-# ╔═╡ a31d6113-2943-4ba7-89d7-29bebf31a970
-begin
-	histogram(claims, label = "total claims", bins = 50)
-	xaxis!("claims")
-	yaxis!("frequency")
 end
 
 # ╔═╡ be0c5c49-e5cd-4bed-b238-893a61a0426f
@@ -92,7 +92,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "20a06e927dfbe947a3d3769f8f3c034d538e0742"
+project_hash = "1a520e7b51bfeccf21dbe6c80f370566a5df6b83"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra"]
