@@ -74,7 +74,7 @@ sum(Ncounts), 52*20, sum(NfreqTable.proportion) # just checking
 bar(Nvalues, Nprop, xlabel = L"N", ylabel = "density", legend = false)
 
 # ╔═╡ 58afccee-f3eb-4e15-a4bd-a1f2c2fd5457
-md"When the estimated probability $\mathbb{P}(N=0)$ is significantly higher than for $N>0$ it is better try fitting a model for $N|N>0.$ *To be continued...*"
+md"When the estimated probability $\mathbb{P}(N=0)$ is significantly higher than for $N>0$ sometimes it is better to try fitting a model for $N|N>0.$ *To be continued...*"
 
 # ╔═╡ 2f67ff47-fe2f-4698-b710-7cb5d15194c7
 md"### Severity modeling"
@@ -166,7 +166,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "148da37bc5882b3b7e73fd57260f138d24b807db"
+project_hash = "0ec2b3c2769f9cf339def05b97ce8a685cc9bd50"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra"]
