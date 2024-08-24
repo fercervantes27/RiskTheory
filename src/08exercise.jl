@@ -55,7 +55,7 @@ begin
     ES = 0.0
     VS = 0.0
     n = nrow(policy) # or: length(policy.AGE)
-    for j ∈ 1:n # or: for j in 1:n 
+    for j ∈ 1:n # or: for j in 1:n   
         qj = q[policy.AGE[j]]
         cj = policy.INSAMOUNT[j]
         ES += (1 + k)*cj*qj # Same as ES = ES + (1 + k)*cj*qj
@@ -87,6 +87,12 @@ end
     println("sim V(S) = ", var(S))
 end
 
+# Note: `median`, `mean`, and `var` are functions from the package `Statistics` from
+#       the standard library of Julia, which means it doesn't need previous installation,
+#       but requires a `using Statistics` before using it. In this particular it was not  
+#       necessary because the `Distributions` packages loads the `Statistics` package 
+#       automatically.
+
 
 #=
     d) Also from c) estimate a non-parametric Value at Risk (VaR) of level 99.5% for
@@ -94,7 +100,7 @@ end
 =#
 
 begin
-    simVaR = quantile(S, 0.995)
+    simVaR = quantile(S, 0.995) # `quantile` is also from the `Statistics` package
     println("sim VaR(0.995) = ", simVaR)
 end
 

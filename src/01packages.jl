@@ -12,7 +12,7 @@ begin
     package = ["QuadGK", "HCubature", "Optim",
                "SpecialFunctions", "LaTeXStrings", 
                "Distributions", "StatsBase",
-               "Plots", "StatsPlots"
+               "Plots", "StatsPlots", "CSV", "DataFrames"
     ]
     for p in package
         println("*** Installing package: ", p)
