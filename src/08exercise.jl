@@ -26,7 +26,7 @@ a) Make use of the Julia packages `CSV` and `DataFrames` to read the data,
 =#
 
 # insurance portfolio
-policy = CSV.read("LIFEinsurance.csv", DataFrame)
+policy = CSV.read("/Users/MAFER/Downloads/RiskTheory-main/data/LIFEinsurance.csv", DataFrame)
 describe(policy)
 age = masaprob(policy.AGE); keys(age)
 bar(age.valores, age.probs, legend = false, xlabel = "Age", ylabel = "Proportion")
@@ -36,7 +36,7 @@ plot(τ, insam.fdp.(τ), lw = 3, legend = false, xlabel = "Insured amount", ylab
 histogram(policy.INSAMOUNT, normalize = true, legend = false, xlabel = "Insured amount", ylabel = "density")
 
 # mortality table
-mort = CSV.read("mortality.csv", DataFrame)
+mort = CSV.read("/Users/MAFER/Downloads/RiskTheory-main/data/mortality.csv", DataFrame)
 describe(mort)
 bar(mort.AGE, mort.qx, legend = false, xlabel = "Age", ylabel = "Mortaity rate")
 
